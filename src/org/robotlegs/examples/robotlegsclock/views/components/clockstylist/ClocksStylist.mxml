@@ -29,7 +29,7 @@
 			{
 				dispatchEvent(new ClocksStyleEvent(ClocksStyleEvent.CHANGE_CLOCKS_STYLE, clocksStyleVO));
 			}
-			//onFocusOut for text, on change for checkboxes
+			//on focusOut for text, on change for checkboxes
 			protected function updateVO(event:Event):void
 			{ //no input validation yet
 				if (event.currentTarget.hasOwnProperty("selected"))
@@ -193,12 +193,13 @@
 				 text="100"
 				 height="18"
 				 focusOut="updateVO(event)"/>
-	<s:Label x="138"
-			 y="438"
+	<s:Label x="137"
+			 y="441"
 			 text="X"
-			 fontSize="14"
+			 fontSize="15"
 			 fontWeight="bold"
 			 click="this.visible=false"/>
+	<s:Label x="10" y="421" text="(changes on focus out)"/>
 	<!--<s:Button x="10"
 			  y="434"
 			  label="change style"

@@ -22,7 +22,7 @@ package org.robotlegs.examples.robotlegsclock.views.mediators
 		{
 			var newWidth:Number=(event.clocksStyleVO.resizeClock*event.clocksStyleVO.appWidth)/100;
 			var newHeight:Number=(event.clocksStyleVO.resizeClock*event.clocksStyleVO.appHeight)/100;
-			view.changeClocksStyles(newWidth, newHeight);
+	//		view.changeClocksStyles(newWidth, newHeight);
 		}
 	}
 }
