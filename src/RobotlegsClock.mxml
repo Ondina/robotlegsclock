@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	 /**
+	 *
+	 *  Copyright (c) 2010 Ondina D.F.
+	 *
+	 *  Permission is hereby granted, free of charge, to any person obtaining a
+	 *  copy of this software and associated documentation files (the "Software"),
+	 *  to deal in the Software without restriction, including without limitation
+	 *  the rights to use, copy, modify, merge, publish, distribute, sublicense,
+	 *  and/or sell copies of the Software, and to permit persons to whom the Software
+	 *  is furnished to do so, subject to the following conditions:
+	 *
+	 *  The above copyright notice and this permission notice shall be included in all
+	 *  copies or substantial portions of the Software.
+	 *
+	 *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+	 *  INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+	 *  PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+	 *  HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+	 *  OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+	 *  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+	 *
+	 *  See README for more information.
+	 *
+	 **/
+-->
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   xmlns:clock="org.robotlegs.examples.robotlegsclock.views.components.clock.*"
+			   xmlns:clockstylist="org.robotlegs.examples.robotlegsclock.views.components.clockstylist.*"
+			   backgroundColor="0xCCCCCC"
+			   backgroundAlpha=".3"
+			   width="700"
+			   height="500"
+			   preinitialize="onAppPreInitialize()">
+	<fx:Script>
+		<![CDATA[
+			import org.robotlegs.examples.robotlegsclock.ClocksContext;
+			private var context:ClocksContext;
+
+			private function onAppPreInitialize():void
+			{
+				context=new ClocksContext(this);
+			}
+
+			private function onClocksPreInitialize():void
+			{
+				theClock.height=theClock.width=(mainHolder.width * 72) / 100;
+				theClock.x=(mainHolder.width - theClock.width) / 2;
+			}
+
+			public function changeClocksStyles(newWidth:Number, newHeight:Number):void
+			{
+				mainHolder.width=newWidth;
+				mainHolder.height=newHeight;
+			}
+		]]>
+	</fx:Script>
+	<fx:Style source="assets/css/style.css"/>
+	<s:Group id="mainHolder"
+			 horizontalCenter="0"
+			 top="70"
+			 width="500"
+			 height="500">
+		<clock:AnalogClock id="theClock"
+						   preinitialize="onClocksPreInitialize()"
+						   top="0"/>
+	</s:Group>
+	<clock:ClocksCircle id="stylesForm"
+						toolTip="click to change clock's look"
+						buttonMode="true"
+						ellipseWidth="16"
+						ellipseHeight="16"
+						gradientColor="0xCCCCCC"
+						strokeColor="0x424242"
+						click="clocksStylist.visible=!clocksStylist.visible"
+						horizontalCenter="0"
+						bottom="14"/>
+	<clockstylist:ClocksStylist id="clocksStylist"
+								visible="false"
+								bottom="0"
+								right="0"/>
+	<s:Label horizontalCenter="0"
+			 bottom="0"
+			 text="change clock's look"/>
+</s:Application>

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	 /**
+	 * Copyright (c) 2010 the original author or authors
+	 *  Permission is hereby granted to use, modify, and distribute this file
+	 * in accordance with the terms of the license agreement accompanying it.
+	 **/
+-->
+<s:Panel xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 width="160"
+		 height="498"
+		 title="Clock's Look"
+		 alpha=".95"
+		 styleName="clocksStylist">
+	<fx:Script>
+		<![CDATA[
+			/*
+			   doubleClickEnabled="true"
+			   doubleClick="this.visible=false"
+			 */
+			import org.robotlegs.examples.robotlegsclock.events.ClocksStyleEvent;
+			import org.robotlegs.examples.robotlegsclock.models.vos.ClocksStyleVO;
+
+			private var clocksStyleVO:ClocksStyleVO=new ClocksStyleVO();
+
+			protected function changeStyle():void
+			{
+				dispatchEvent(new ClocksStyleEvent(ClocksStyleEvent.CHANGE_CLOCKS_STYLE, clocksStyleVO));
+			}
+			//onFocusOut for text, on change for checkboxes
+			protected function updateVO(event:Event):void
+			{ //no input validation yet
+				if (event.currentTarget.hasOwnProperty("selected"))
+					clocksStyleVO[event.currentTarget.id]=event.currentTarget.selected;
+				else
+					clocksStyleVO[event.currentTarget.id]=event.currentTarget.text;
+				changeStyle();
+			}
+		]]>
+	</fx:Script>
+	<s:CheckBox x="10"
+				y="5"
+				label="show Legs"
+				id="showLegs"
+				selected="true"
+				change="updateVO(event)"/>
+	<s:CheckBox x="10"
+				y="25"
+				label="showDialsText"
+				selected="true"
+				id="showDialsText"
+				change="updateVO(event)"/>
+	<s:CheckBox x="10"
+				y="44"
+				label="showDialsCircle"
+				id="showDialsCircle"
+				change="updateVO(event)"/>
+	<s:CheckBox x="10"
+				y="65"
+				label="showClocksLogo"
+				id="showClocksLogo"
+				selected="true"
+				change="updateVO(event)"/>
+	<s:Label x="10"
+			 y="90"
+			 text="clocksLogo"/>
+	<s:TextInput x="82"
+				 y="86"
+				 id="clocksLogoText"
+				 text="[robotlegs-as3]"
+				 width="70"
+				 focusOut="updateVO(event)"
+				 height="18"/>
+	<s:Label x="10"
+			 y="115"
+			 text="logoStartAngle"/>
+	<s:TextInput x="116"
+				 y="111"
+				 width="36"
+				 text="215"
+				 id="clocksLogoStartAngle"
+				 focusOut="updateVO(event)"
+				 height="18"/>
+	<s:Label x="10"
+			 y="144"
+			 text="dark"/>
+	<s:TextInput x="92"
+				 y="139.5"
+				 id="darkColor"
+				 width="60"
+				 text="0x424242"
+				 focusOut="updateVO(event)"
+				 height="18"/>
+	<s:Label x="10"
+			 y="168"
+			 text="accent"/>
+	<s:TextInput x="92"
+				 y="163.5"
+				 id="accentColor"
+				 width="60"
+				 text="0xa2a4f5"
+				 focusOut="updateVO(event)"
+				 height="18"/>
+	<s:Label x="10"
+			 y="194"
+			 text="light"/>
+	<s:TextInput x="92"
+				 y="189.5"
+				 id="lightColor"
+				 width="60"
+				 text="0xFFFFFF"
+				 focusOut="updateVO(event)"
+				 height="18"/>
+	<s:Label x="10"
+			 y="217"
+			 text="shadow"/>
+	<s:TextInput x="92"
+				 y="213"
+				 height="18"
+				 id="shadowColor"
+				 width="60"
+				 text="0xCCCCCC"
+				 focusOut="updateVO(event)"/>
+	<s:Label x="10"
+			 y="250"
+			 text="secondsHand"/>
+	<s:TextInput x="92"
+				 y="245"
+				 width="60"
+				 text="0xa2a4f5"
+				 id="secondsHandColor"
+				 focusOut="updateVO(event)"
+				 height="18"/>
+	<s:Label x="10"
+			 y="274"
+			 text="minutesHand"/>
+	<s:TextInput x="92"
+				 y="269"
+				 width="60"
+				 text="0xFFFFFF"
+				 id="minutesHandColor"
+				 focusOut="updateVO(event)"
+				 height="18"/>
+	<s:Label x="10"
+			 y="296"
+			 text="hoursHand"/>
+	<s:TextInput x="92"
+				 y="291"
+				 width="60"
+				 text="0xFFFFFF"
+				 id="hoursHandColor"
+				 focusOut="updateVO(event)"
+				 height="18"/>
+	<s:Label x="10"
+			 y="328"
+			 text="dialsText"/>
+	<s:TextInput x="92"
+				 y="323"
+				 width="60"
+				 text="0xa2a4f5"
+				 id="dialsTextColor"
+				 focusOut="updateVO(event)"
+				 height="18"/>
+	<s:Label x="10"
+			 y="374"
+			 text="minutesLines"
+			 focusOut="updateVO(event)"/>
+	<s:TextInput x="92"
+				 y="369"
+				 width="60"
+				 text="0xFFFFFF"
+				 id="minutesLinesColor"
+				 focusOut="updateVO(event)"
+				 height="18"/>
+	<s:Label x="10"
+			 y="352"
+			 text="dialsCircle"/>
+	<s:TextInput x="92"
+				 y="347"
+				 width="60"
+				 id="dialsCircleColor"
+				 text="0xFFFFFF"
+				 height="18"/>
+	<s:Label x="10"
+			 y="401"
+			 text="resize %"/>
+	<s:TextInput x="92"
+				 y="397"
+				 width="56"
+				 id="resizeClock"
+				 text="100"
+				 height="18"
+				 focusOut="updateVO(event)"/>
+	<s:Label x="138"
+			 y="438"
+			 text="X"
+			 fontSize="14"
+			 fontWeight="bold"
+			 click="this.visible=false"/>
+	<!--<s:Button x="10"
+			  y="434"
+			  label="change style"
+			  id="changeColorsButton"
+			  click="changeStyle()"/>-->
+</s:Panel>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	 /**
+	 * Copyright (c) 2010 the original author or authors
+	 *  Permission is hereby granted to use, modify, and distribute this file
+	 * in accordance with the terms of the license agreement accompanying it.
+	 **/
+-->
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:mx="library://ns.adobe.com/flex/mx">
+	<fx:Script>
+		<![CDATA[
+			[Bindable]
+			public var ellipseHeight:Number=360;
+			[Bindable]
+			public var ellipseWidth:Number=360;
+			[Bindable]
+			public var strokeColor:Number=0x353535;
+			[Bindable]
+			public var strokeWeight:Number=6;
+			[Bindable]
+			public var gradientColor:Number=0x424242;
+			[Bindable]
+			public var gradientAlpha:Number=0.8;
+		]]>
+	</fx:Script>
+	<s:Graphic>
+		<s:Ellipse width="{ellipseWidth}"
+				   height="{ellipseHeight}">
+			<s:stroke>
+				<s:SolidColorStroke color="{strokeColor}"
+									weight="{strokeWeight}"/>
+			</s:stroke>
+			<s:fill>
+				<s:RadialGradient>
+					<s:entries>
+						<s:GradientEntry color="0xFFFFFF"
+										 ratio="0.00"
+										 alpha="1"/>
+						<s:GradientEntry color="{gradientColor}"
+										 ratio="0.03"
+										 alpha="{gradientAlpha}"/>
+						<s:GradientEntry color="{gradientColor}"
+										 ratio="1"
+										 alpha="1"/>
+					</s:entries>
+				</s:RadialGradient>
+			</s:fill>
+		</s:Ellipse>
+	</s:Graphic>
+</s:Group>

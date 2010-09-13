@@ -1,0 +1,37 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+
+@font-face 
+{
+	src:url("/assets/css/MyriadPro-Bold.otf");
+	font-family: "MyriadPro";	
+	unicodeRange: U+0041-U+005A, 
+	U+0061-U+007A, 
+	U+0030-U+0039, 
+	U+0020-U+002F, 
+	U+003A-U+0040, 
+	U+005B-U+0060, 
+	U+007B-U+007E;
+	embedAsCFF:true;
+	font-weight: bold;
+}
+
+global
+{
+	fontFamily:"MyriadPro";
+}
+.clocksStylist{
+	fontFamily:"Verdana";
+	fontSize:10;
+}
+mx|ToolTip {
+	backgroundColor: #b12121;	
+	backgroundAlpha: 1;
+	color: white;
+	fontFamily:"Verdana";
+	fontSize: 12;
+	fontWeight: bold;
+}
+
+
