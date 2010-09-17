@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:mx="library://ns.adobe.com/flex/mx">
+	<s:layout>
+		<s:VerticalLayout/>
+	</s:layout>
+	<fx:Script>
+		<![CDATA[
+			import org.robotlegs.examples.robotlegsclock.events.TimeZoneEvent;
+		]]>
+	</fx:Script>
+	<s:DropDownList x="9"
+					y="30"
+					prompt="choose the time zone"
+					width="204"
+					id="timeZones"
+					change="dispatchEvent(new TimeZoneEvent(TimeZoneEvent.TIMEZONE_CHANGED,timeZones.selectedItem.data)) "/>
+</s:Group>

@@ -12,7 +12,7 @@
 	 *  is furnished to do so, subject to the following conditions:
 	 *
 	 *  The above copyright notice and this permission notice shall be included in all
-	 *  copies or substantial portions of the Software. 
+	 *  copies or substantial portions of the Software.
 	 *
 	 *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
 	 *  INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
@@ -48,11 +48,6 @@
 				context=new ClocksContext(this);
 			}
 
-			private function onClocksPreInitialize():void
-			{
-				theClock.height=theClock.width=(mainHolder.width * 72) / 100;
-			}
-
 			public function changeClocksStyles(newWidth:Number, newHeight:Number):void
 			{
 				mainHolder.width=newWidth;
@@ -61,19 +56,20 @@
 		]]>
 	</fx:Script>
 	<s:Group id="mainHolder"
-			 width="500"
-			 height="500"
-			 verticalCenter="70"
-			 horizontalCenter="0">
+					   width="500"
+					   height="500"
+					   verticalCenter="70"
+					   horizontalCenter="0">
 		<clock:AnalogClock id="theClock"
-						   preinitialize="onClocksPreInitialize()"
-						   horizontalCenter="0"/>
+						   width="{mainHolder.width*.72}"
+						   height="{mainHolder.height*.72}"/>
 	</s:Group>
 	<s:Group top="70"
-			 horizontalCenter="{-mainHolder.width/2}">
+			x="{mainHolder.x-clocksStylist.width}">
 		<s:layout>
-			<s:VerticalLayout gap="10"/>
+			<s:VerticalLayout gap="15"/>
 		</s:layout>
+		<clockstylist:TimeZone/>
 		<s:Label text="change clock's look"/>
 		<clock:ClocksCircle id="stylesForm"
 							toolTip="click to change clock's look"

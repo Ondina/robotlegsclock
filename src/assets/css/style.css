@@ -25,6 +25,20 @@ global
 	fontFamily:"Verdana";
 	fontSize:10;
 }
+s|DropDownList{	
+	cornerRadius:		4;
+	dropShadowVisible:	false;		
+	fontSize:			11;
+	/*alternatingItemColors:	#FFFFFF, #CCCCCC;*/
+	textRollOverColor:		#b4b4d9;
+	selectionColor:			#cbcbe3;
+	rollOverColor: 			#cbcbe3;	
+	skinClass:ClassReference("org.robotlegs.examples.robotlegsclock.views.skins.SkinDropList");	
+}
+s|DropDownList #labelDisplay{
+	fontFamily:"Verdana";
+	fontSize: 11;
+}
 mx|ToolTip {
 	backgroundColor: #b12121;	
 	backgroundAlpha: 1;

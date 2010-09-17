@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2010 the original author or authors
- * 
+ *
  * Permission is hereby granted to use, modify, and distribute this file
  * in accordance with the terms of the license agreement accompanying it.
  */
@@ -9,10 +9,10 @@ package org.robotlegs.examples.robotlegsclock.views.components.clock
 	import flash.events.TimerEvent;
 	import flash.geom.Rectangle;
 	import flash.utils.Timer;
-	
+
 	import org.robotlegs.examples.robotlegsclock.models.vos.ClocksStyleVO;
 	import org.robotlegs.examples.robotlegsclock.utils.GeometryUtils;
-	
+
 	import spark.components.Group;
 
 	public class ClocksHands extends Group
@@ -22,6 +22,7 @@ package org.robotlegs.examples.robotlegsclock.views.components.clock
 		protected var secondsHand:Group=new Group();
 		protected var minutesHand:Group=new Group();
 		protected var hoursHand:Group=new Group();
+		protected var _timeZoneOffset:Number=0;
 		protected var _clocksRectangle:Rectangle=new Rectangle();
 
 		protected var clocksTimer:Timer;
@@ -29,6 +30,22 @@ package org.robotlegs.examples.robotlegsclock.views.components.clock
 		public function ClocksHands()
 		{
 			super();
+		}
+
+		public function set timeZoneOffset(val:Number):void
+		{
+			_timeZoneOffset=val;
+		}
+
+		public function get timeZoneOffset():Number
+		{
+			return _timeZoneOffset;
+		}
+
+		public function restartTicking():void
+		{
+			clocksTimer.stop();
+			clocksTimer.start();
 		}
 
 		public function startTicking():void
@@ -80,7 +97,7 @@ package org.robotlegs.examples.robotlegsclock.views.components.clock
 		protected function set time(time:Date):void
 		{
 			var hours:Number=time.hours;
-			hours+=(1 / 60 * time.minutes);
+			hours+=(1 / 60 * time.minutes) + timeZoneOffset;
 			hour=hours;
 			minutes=time.minutes;
 			seconds=time.seconds;

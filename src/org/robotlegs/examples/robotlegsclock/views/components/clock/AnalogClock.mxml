@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-	 /** 
+	 /**
 	 * Copyright (c) 2010 the original author or authors
 	 *  Permission is hereby granted to use, modify, and distribute this file
 	 * in accordance with the terms of the license agreement accompanying it.
@@ -29,7 +29,9 @@
 			protected function positionClocksElements():void
 			{
 				clocksLegs.scaleX=clocksLegs.scaleY=(1.50 * this.height) / 1000;
-				clocksLegs.verticalCenter=+(clocksLegs.scaleX * clocksLegs.height) / 2;
+				clocksLegs.top=+(clocksLegs.scaleX * clocksLegs.height);
+				clocksLegs.left=clocksRectangle.x * clocksLegs.scaleX;
+
 				calculateCirclesPosition("backgroundCircle", 100);
 				calculateCirclesPosition("middleCircle", 8.3);
 				calculateCirclesPosition("littleCicle", 3);
@@ -42,6 +44,7 @@
 					clocksLogoBackground.drawClocksLogoBackground();
 				}
 				clocksHands.clocksRectangle=clocksRectangle;
+				clocksHands.timeZoneOffset=0;
 				clocksHands.startTicking();
 			}
 
@@ -75,10 +78,15 @@
 				clocksLogoBackground.clocksStyleVO=clocksStyleVO;
 				clocksLogoBackground.redoClocksLogoBackground();
 			}
+
+			public function changeTimeZone(val:Number):void
+			{
+				clocksHands.timeZoneOffset=val;
+				clocksHands.restartTicking();
+			}
 		]]>
 	</fx:Script>
 	<clock:ClocksLegs id="clocksLegs"
-					  horizontalCenter="0"
 					  visible="{clocksStyleVO.showLegs}"/>
 	<s:Group id="analogClock"
 			 width="100%"
@@ -100,7 +108,7 @@
 		<clock:ClocksHands id="clocksHands"
 						   width="100%"
 						   height="100%"
-						   clocksStyleVO="{clocksStyleVO}"/>		
+						   clocksStyleVO="{clocksStyleVO}"/>
 		<clock:ClocksCircle id="littleCicle"
 							gradientColor="{clocksStyleVO.accentColor}"
 							strokeColor="{clocksStyleVO.lightColor}"/>

@@ -8,13 +8,9 @@ package org.robotlegs.examples.robotlegsclock.controllers.clock
 	{
 		[Inject]
 		public var event:ClocksStyleEvent;
+		
 		[Inject]
 		public var clocksModel:ClocksModel;
-
-		public function ChangeStyleCommand()
-		{
-			super();
-		}
 
 		override public function execute():void
 		{
